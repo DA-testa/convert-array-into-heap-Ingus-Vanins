@@ -1,4 +1,4 @@
-# python3
+# python3 Ingus Vaņins 7.grupa
 
 
 def build_heap(data):
