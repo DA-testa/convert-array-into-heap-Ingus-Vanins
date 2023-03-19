@@ -28,19 +28,22 @@ def mHeap(data, n, i, swaps):
 
     return swaps
 
-
 def main():
     
-    inputs = input()
-    if "I" in inputs:
+    in1 = input()
+    if "I" in in1:
         n = int(input())
         data = list(map(int, input().split()))
-    elif "F" in inputs:
-        inputs2 = input()
-        if "a" not in inputs2:
-            with open("./tests/" + inputs2, mode='r') as fails:
+        
+    elif "F" in in1:
+        in2 = input()
+        
+        if "a" not in in2:
+            
+            with open("./tests/" + in2, mode='r') as fails:
                 n = int(fails.readline())
                 data = list(map(int,fails.readline().split()))
+                
     else:
         print("error")
         return
@@ -50,7 +53,6 @@ def main():
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
-
-
+        
 if __name__ == "__main__":
     main()
