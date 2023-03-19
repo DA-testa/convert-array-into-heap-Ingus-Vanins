@@ -11,15 +11,15 @@ def build_heap(data):
     return swaps
 
 def mHeap(data, n, i, swaps):
-    l = 2 * i + 1
-    r = 2 * i + 2
-    min = i
+    l= 2 * i + 1
+    r= 2 * i + 2
+    min=i
 
-    if l <= n - 1 and data[l] < data[min]:
-        min =l
+    if l <= n - 1 and data[l]<data[min]:
+        min=l
         
-    if r <= n - 1 and data[r] < data[min]:
-        min =r
+    if r <= n - 1 and data[r]<data[min]:
+        min=r
         
     if i != min:
         data[i], data[min] = data[min], data[i]
@@ -30,13 +30,14 @@ def mHeap(data, n, i, swaps):
 
 def main():
     
-    in1 = input()
+    in1=input()
+    
     if "I" in in1:
         n = int(input())
         data = list(map(int, input().split()))
         
     elif "F" in in1:
-        in2 = input()
+        in2=input()
         
         if "a" not in in2:
             
