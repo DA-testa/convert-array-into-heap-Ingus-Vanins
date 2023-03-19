@@ -6,31 +6,31 @@ def build_heap(data):
     n = len(data)
 
     for i in range(n // 2, -1, -1):
-        minHeap(data, n, i, swaps)
+       mHeap(data, n, i, swaps)
+                
     return swaps
 
-def minHeap(data, n, i, swaps):
-    lSide = 2 * i + 1
-    rSide = 2 * i + 2
+def mHeap(data, n, i, swaps):
+    l = 2 * i + 1
+    r = 2 * i + 2
     min = i
 
-    if lSide <= n - 1 and data[lSide] < data[min]:
-        min = lSide
-    if rSide <= n - 1 and data[rSide] < data[min]:
-        min = rSide
+    if l <= n - 1 and data[l] < data[min]:
+        min =l
+        
+    if r <= n - 1 and data[r] < data[min]:
+        min =r
+        
     if i != min:
         data[i], data[min] = data[min], data[i]
         swaps.append((i, min))
-        minHeap(data, n, min, swaps)
+        mHeap(data, n, min, swaps)
 
     return swaps
 
 
 def main():
     
-   # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
     inputs = input()
     if "I" in inputs:
         n = int(input())
@@ -38,28 +38,15 @@ def main():
     elif "F" in inputs:
         inputs2 = input()
         if "a" not in inputs2:
-            with open("./tests/"+inputs2, mode='r') as fails:
+            with open("./tests/" + inputs2, mode='r') as fails:
                 n = int(fails.readline())
                 data = list(map(int,fails.readline().split()))
     else:
         print("error")
         return
-
-    # input from keyboard
     
-
-    # checks if lenght of data is the same as the said lenght
     assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
     swaps = build_heap(data)
-
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
