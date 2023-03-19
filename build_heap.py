@@ -3,29 +3,25 @@
 
 def build_heap(data):
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
-    
     n = len(data)
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(data, n, i, swaps)
+
+    for i in range(n // 2, -1, -1):
+        minHeap(data, n, i, swaps)
     return swaps
 
-def heapify(data, n, i, swaps):
-    largest = i
-    left = 2 * i + 1
-    right = 2 * i + 2
+def minHeap(data, n, i, swaps):
+    lSide = 2 * i + 1
+    rSide = 2 * i + 2
+    min = i
 
-    if left < n and data[left] > data[largest]:
-        largest = left
-
-    if right < n and data[right] > data[largest]:
-        largest = right
-
-    if largest != i:
-        swaps.append((i, largest))
-        data[i], data[largest] = data[largest], data[i]
-        heapify(data, n, largest, swaps)
+    if lSide <= n - 1 and data[lSide] < data[min]:
+        min = lSide
+    if rSide <= n - 1 and data[rSide] < data[min]:
+        min = rSide
+    if i != min:
+        data[i], data[min] = data[min], data[i]
+        swaps.append((i, min))
+        minHeap(data, n, min, swaps)
 
     return swaps
 
