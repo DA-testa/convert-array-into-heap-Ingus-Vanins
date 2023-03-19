@@ -1,42 +1,63 @@
-# python3
+# python3 Ingus Vaņins 7.grupa
 
 
 def build_heap(data):
+    
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
+    n = len(data)
 
+    for i in range(n // 2, -1, -1):
+       mHeap(data, n, i, swaps)
+                
+    return swaps
+
+def mHeap(data, n, i, swaps):
+    
+    l= 2 * i + 1
+    r= 2 * i + 2
+    min=i
+
+    if l<=n - 1 and data[l]<data[min]:
+        min=l
+        
+    if r<=n - 1 and data[r]<data[min]:
+        min=r
+        
+    if i != min:
+        
+        data[i], data[min] = data[min], data[i]
+        swaps.append((i, min))
+        mHeap(data, n, min, swaps)
 
     return swaps
 
-
 def main():
     
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
-
-
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
-
-    # checks if lenght of data is the same as the said lenght
+    in1=input()
+    
+    if "I" in in1:
+        n=int(input())
+        data=list(map(int, input().split()))
+        
+    elif "F" in in1:
+        
+        in2=input()
+        
+        if "a" not in in2:
+            
+            with open("./tests/" + in2, mode='r') as fails:
+                n=int(fails.readline())
+                data=list(map(int,fails.readline().split()))
+                
+    else:
+        print("error")
+        return
+    
     assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
     swaps = build_heap(data)
-
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
-
-
+        
 if __name__ == "__main__":
     main()
