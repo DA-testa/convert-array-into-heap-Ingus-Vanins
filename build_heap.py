@@ -36,8 +36,8 @@ def main():
     in1=input()
     
     if "I" in in1:
-        n = int(input())
-        data = list(map(int, input().split()))
+        n=int(input())
+        data=list(map(int, input().split()))
         
     elif "F" in in1:
         
@@ -46,8 +46,8 @@ def main():
         if "a" not in in2:
             
             with open("./tests/" + in2, mode='r') as fails:
-                n = int(fails.readline())
-                data = list(map(int,fails.readline().split()))
+                n=int(fails.readline())
+                data=list(map(int,fails.readline().split()))
                 
     else:
         print("error")
